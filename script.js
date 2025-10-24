@@ -577,11 +577,23 @@ resetStatsBtn.addEventListener('click', resetStats);
 // Load saved stats from localStorage
 loadStats();
 
+// Debug: Check if timer elements are found
+console.log('Timer container element:', timerContainer);
+console.log('Timer duration select element:', timerDurationSelect);
+
+// Test function to manually start timer (for debugging)
+window.testTimer = function() {
+    console.log('Testing timer...');
+    startTimer(10); // 10 seconds for testing
+};
+
 function generateQuestion() {
     const selectedSubject = subjectSelect.value;
     const selectedDifficulty = difficultySelect.value;
     const selectedType = questionTypeSelect.value;
     const selectedTimerDuration = parseInt(timerDurationSelect.value);
+    
+    console.log('Selected timer duration:', selectedTimerDuration); // Debug log
     
     // Start timer if duration is selected
     if (selectedTimerDuration > 0) {
@@ -950,13 +962,20 @@ function loadStats() {
 
 // Timer Functions
 function startTimer(duration) {
+    console.log('Starting timer with duration:', duration); // Debug log
     stopTimer(); // Clear any existing timer
     timerDuration = duration;
     timeRemaining = duration;
     timerActive = true;
     
     // Show timer container
-    timerContainer.style.display = 'block';
+    if (timerContainer) {
+        timerContainer.style.display = 'block';
+        console.log('Timer container displayed'); // Debug log
+    } else {
+        console.error('Timer container not found!'); // Debug log
+    }
+    
     updateTimerDisplay();
     
     // Start timer interval
