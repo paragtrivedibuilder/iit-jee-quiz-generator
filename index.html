@@ -45,6 +45,18 @@
                 </select>
             </div>
 
+            <div class="control-group">
+                <label for="timerDuration">Timer (minutes):</label>
+                <select id="timerDuration">
+                    <option value="0">No Timer</option>
+                    <option value="1">1 minute</option>
+                    <option value="2">2 minutes</option>
+                    <option value="3">3 minutes</option>
+                    <option value="5">5 minutes</option>
+                    <option value="10">10 minutes</option>
+                </select>
+            </div>
+
             <button id="generateBtn" class="generate-btn">Generate Question</button>
         </div>
 
@@ -65,6 +77,23 @@
                         <h3>📝 Question Types</h3>
                         <p>MCQ, Numerical, and Assertion-Reason</p>
                     </div>
+                    <div class="feature">
+                        <h3>⏱️ Timer Practice</h3>
+                        <p>Practice with time limits for realistic exam conditions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer-container" id="timerContainer" style="display: none;">
+            <div class="timer-display">
+                <div class="timer-icon">⏱️</div>
+                <div class="timer-text">
+                    <span class="timer-label">Time Remaining:</span>
+                    <span class="timer-time" id="timerDisplay">00:00</span>
+                </div>
+                <div class="timer-progress">
+                    <div class="timer-progress-bar" id="timerProgressBar"></div>
                 </div>
             </div>
         </div>

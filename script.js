@@ -548,12 +548,22 @@ let stats = {
     correct: 0
 };
 
+// Timer State
+let timerInterval = null;
+let timerDuration = 0; // in seconds
+let timeRemaining = 0;
+let timerActive = false;
+
 // DOM Elements
 const subjectSelect = document.getElementById('subject');
 const difficultySelect = document.getElementById('difficulty');
 const questionTypeSelect = document.getElementById('questionType');
+const timerDurationSelect = document.getElementById('timerDuration');
 const generateBtn = document.getElementById('generateBtn');
 const questionContainer = document.getElementById('questionContainer');
+const timerContainer = document.getElementById('timerContainer');
+const timerDisplay = document.getElementById('timerDisplay');
+const timerProgressBar = document.getElementById('timerProgressBar');
 const statsContainer = document.getElementById('stats');
 const attemptedCount = document.getElementById('attemptedCount');
 const correctCount = document.getElementById('correctCount');
@@ -571,6 +581,14 @@ function generateQuestion() {
     const selectedSubject = subjectSelect.value;
     const selectedDifficulty = difficultySelect.value;
     const selectedType = questionTypeSelect.value;
+    const selectedTimerDuration = parseInt(timerDurationSelect.value);
+    
+    // Start timer if duration is selected
+    if (selectedTimerDuration > 0) {
+        startTimer(selectedTimerDuration * 60); // Convert minutes to seconds
+    } else {
+        stopTimer();
+    }
     
     // Filter questions based on criteria
     let availableQuestions = [];
@@ -928,4 +946,127 @@ function loadStats() {
     if (savedStats) {
         stats = JSON.parse(savedStats);
     }
+}
+
+// Timer Functions
+function startTimer(duration) {
+    stopTimer(); // Clear any existing timer
+    timerDuration = duration;
+    timeRemaining = duration;
+    timerActive = true;
+    
+    // Show timer container
+    timerContainer.style.display = 'block';
+    updateTimerDisplay();
+    
+    // Start timer interval
+    timerInterval = setInterval(() => {
+        timeRemaining--;
+        updateTimerDisplay();
+        
+        if (timeRemaining <= 0) {
+            timerExpired();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    timerActive = false;
+    timerContainer.style.display = 'none';
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    timerDisplay.textContent = formattedTime;
+    
+    // Update progress bar
+    const progress = (timeRemaining / timerDuration) * 100;
+    timerProgressBar.style.width = `${progress}%`;
+    
+    // Change colors based on time remaining
+    const timerContainerElement = timerContainer.querySelector('.timer-display');
+    if (timeRemaining <= 30) {
+        timerContainerElement.classList.add('timer-warning');
+    } else {
+        timerContainerElement.classList.remove('timer-warning');
+    }
+    
+    if (timeRemaining <= 10) {
+        timerContainerElement.classList.add('timer-expired');
+    } else {
+        timerContainerElement.classList.remove('timer-expired');
+    }
+    
+    // Show notifications
+    if (timeRemaining === 30) {
+        showTimerNotification('30 seconds remaining!');
+    } else if (timeRemaining === 10) {
+        showTimerNotification('10 seconds remaining!');
+    }
+}
+
+function timerExpired() {
+    stopTimer();
+    showTimerNotification('Time\'s up! Question auto-submitted.');
+    
+    // Auto-submit the current question if there's an answer
+    if (currentQuestion && userAnswer !== null) {
+        checkAnswer(currentQuestion);
+    } else {
+        // Show timeout message
+        const timeoutMessage = document.createElement('div');
+        timeoutMessage.className = 'result-message incorrect';
+        timeoutMessage.innerHTML = `
+            <h3>⏰ Time's Up!</h3>
+            <p>You ran out of time. Better luck next time!</p>
+        `;
+        timeoutMessage.style.cssText = `
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        `;
+        
+        const questionElement = document.querySelector('.question');
+        if (questionElement) {
+            questionElement.appendChild(timeoutMessage);
+        }
+        
+        // Show next button
+        const nextBtn = document.getElementById('nextBtn');
+        if (nextBtn) {
+            nextBtn.style.display = 'inline-block';
+        }
+    }
+}
+
+function showTimerNotification(message) {
+    // Remove existing notification
+    const existingNotification = document.querySelector('.timer-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create new notification
+    const notification = document.createElement('div');
+    notification.className = 'timer-notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    }, 3000);
 }
