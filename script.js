@@ -652,7 +652,12 @@ function createQuestionHTML(question) {
     } else if (question.type === 'numerical') {
         questionContent = `
             <div class="question-text">${question.question}</div>
-            <input type="number" class="numerical-input" id="numericalAnswer" placeholder="Enter your answer" step="0.01">
+            <div class="numerical-input-container">
+                <input type="number" class="numerical-input" id="numericalAnswer" placeholder="Enter your numerical answer" step="0.01" autocomplete="off">
+                <div class="input-hints">
+                    <small>💡 Tip: Use decimal numbers (e.g., 3.14, 0.5) and press Enter to submit</small>
+                </div>
+            </div>
         `;
     } else if (question.type === 'assertion') {
         questionContent = `
@@ -744,6 +749,69 @@ function addQuestionEventListeners(question) {
         
         checkAnswer(question);
     });
+    
+    // Enhanced keyboard support for numerical inputs
+    if (question.type === 'numerical' && numericalInput) {
+        // Auto-focus on numerical input
+        numericalInput.focus();
+        
+        // Handle Enter key to submit
+        numericalInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const answer = parseFloat(numericalInput.value);
+                if (!isNaN(answer)) {
+                    userAnswer = answer;
+                    checkAnswer(question);
+                } else {
+                    alert('Please enter a valid number');
+                }
+            }
+        });
+        
+        // Handle Escape key to clear
+        numericalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                numericalInput.value = '';
+                numericalInput.focus();
+            }
+        });
+        
+        // Real-time validation feedback
+        numericalInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            if (value && isNaN(parseFloat(value))) {
+                e.target.style.borderColor = '#dc3545';
+                e.target.style.backgroundColor = '#f8d7da';
+            } else {
+                e.target.style.borderColor = '#e9ecef';
+                e.target.style.backgroundColor = '#fff';
+            }
+        });
+        
+        // Handle Tab key to submit (alternative to Enter)
+        numericalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab' && !e.shiftKey) {
+                e.preventDefault();
+                const answer = parseFloat(numericalInput.value);
+                if (!isNaN(answer)) {
+                    userAnswer = answer;
+                    checkAnswer(question);
+                }
+            }
+        });
+        
+        // Handle Ctrl+Enter to submit
+        numericalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                e.preventDefault();
+                const answer = parseFloat(numericalInput.value);
+                if (!isNaN(answer)) {
+                    userAnswer = answer;
+                    checkAnswer(question);
+                }
+            }
+        });
+    }
     
     // Handle next button
     nextBtn.addEventListener('click', () => {

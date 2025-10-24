@@ -251,20 +251,42 @@ body {
     transform: scale(1.2);
 }
 
+.numerical-input-container {
+    margin-bottom: 20px;
+}
+
 .numerical-input {
     width: 100%;
     padding: 15px;
     border: 2px solid #e9ecef;
     border-radius: 8px;
     font-size: 1.1rem;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
 }
 
 .numerical-input:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+.numerical-input:invalid {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.input-hints {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.input-hints small {
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-style: italic;
 }
 
 .assertion-reason {
