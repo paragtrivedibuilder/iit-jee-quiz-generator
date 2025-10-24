@@ -92,6 +92,79 @@ const questionDatabase = {
             reason: 'Conservative forces have potential energy associated with them.',
             correctAnswer: 'A',
             explanation: 'Both assertion and reason are true, and reason correctly explains assertion. Conservative forces like gravity and spring force have potential energy and their work depends only on initial and final positions.'
+        },
+        {
+            id: 11,
+            type: 'mcq',
+            difficulty: 'easy',
+            question: 'What is the unit of power?',
+            options: ['Joule', 'Watt', 'Newton', 'Pascal'],
+            correctAnswer: 1,
+            explanation: 'Power is measured in Watts (W). 1 W = 1 J/s'
+        },
+        {
+            id: 12,
+            type: 'mcq',
+            difficulty: 'easy',
+            question: 'Which law states that every action has an equal and opposite reaction?',
+            options: ['Newton\'s First Law', 'Newton\'s Second Law', 'Newton\'s Third Law', 'Law of Gravitation'],
+            correctAnswer: 2,
+            explanation: 'Newton\'s Third Law states that for every action, there is an equal and opposite reaction.'
+        },
+        {
+            id: 13,
+            type: 'numerical',
+            difficulty: 'easy',
+            question: 'A car travels 100 km in 2 hours. What is its average speed?',
+            answer: 50,
+            tolerance: 0.1,
+            explanation: 'Average speed = total distance / total time = 100 km / 2 hours = 50 km/h'
+        },
+        {
+            id: 14,
+            type: 'mcq',
+            difficulty: 'medium',
+            question: 'What is the acceleration due to gravity on Earth?',
+            options: ['9.8 m/s²', '10 m/s²', '8.9 m/s²', '11 m/s²'],
+            correctAnswer: 0,
+            explanation: 'The standard acceleration due to gravity on Earth is approximately 9.8 m/s²'
+        },
+        {
+            id: 15,
+            type: 'numerical',
+            difficulty: 'medium',
+            question: 'A force of 20 N is applied to move a 5 kg object. Calculate the acceleration.',
+            answer: 4,
+            tolerance: 0.1,
+            explanation: 'Using F = ma, acceleration a = F/m = 20/5 = 4 m/s²'
+        },
+        {
+            id: 16,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'A satellite orbits Earth at a height where the gravitational force is 1/4th of that at the surface. What is the orbital speed?',
+            options: ['√(gR/2)', '√(gR)', '√(2gR)', '√(gR/4)'],
+            correctAnswer: 0,
+            explanation: 'At height h where g\' = g/4, orbital speed v = √(g\'r) = √((g/4)(R+h)) = √(gR/2) for h = R'
+        },
+        {
+            id: 17,
+            type: 'numerical',
+            difficulty: 'hard',
+            question: 'A spring with spring constant 200 N/m is compressed by 0.1 m. Calculate the potential energy stored.',
+            answer: 1,
+            tolerance: 0.1,
+            explanation: 'Potential energy U = (1/2)kx² = (1/2) × 200 × (0.1)² = 100 × 0.01 = 1 J'
+        },
+        {
+            id: 18,
+            type: 'assertion',
+            difficulty: 'hard',
+            question: 'Assertion: The escape velocity from Earth is independent of the mass of the object. Reason: Escape velocity depends only on the gravitational field strength.',
+            assertion: 'The escape velocity from Earth is independent of the mass of the object.',
+            reason: 'Escape velocity depends only on the gravitational field strength.',
+            correctAnswer: 'A',
+            explanation: 'Both assertion and reason are true, and reason correctly explains assertion. Escape velocity v = √(2GM/R) is independent of the escaping object\'s mass.'
         }
     ],
     chemistry: [
@@ -222,6 +295,79 @@ const questionDatabase = {
             options: ['4', '0.33', '12', '0.083'],
             correctAnswer: 1,
             explanation: 'Kp = Kc(RT)^Δn where Δn = 2 - (1+3) = -2. Kp = 4 × (0.0821 × 300)^(-2) = 4 × (24.63)^(-2) = 4/606.5 ≈ 0.33'
+        },
+        {
+            id: 15,
+            type: 'mcq',
+            difficulty: 'easy',
+            question: 'What is the chemical symbol for Gold?',
+            options: ['Go', 'Gd', 'Au', 'Ag'],
+            correctAnswer: 2,
+            explanation: 'Gold has the chemical symbol Au, derived from its Latin name "aurum".'
+        },
+        {
+            id: 16,
+            type: 'mcq',
+            difficulty: 'easy',
+            question: 'Which gas makes up about 78% of Earth\'s atmosphere?',
+            options: ['Oxygen', 'Nitrogen', 'Carbon dioxide', 'Argon'],
+            correctAnswer: 1,
+            explanation: 'Nitrogen (N₂) makes up approximately 78% of Earth\'s atmosphere.'
+        },
+        {
+            id: 17,
+            type: 'numerical',
+            difficulty: 'easy',
+            question: 'How many atoms are in 1 mole of any element?',
+            answer: 6.022,
+            tolerance: 0.001,
+            explanation: '1 mole contains Avogadro\'s number of particles: 6.022 × 10²³ atoms'
+        },
+        {
+            id: 18,
+            type: 'mcq',
+            difficulty: 'medium',
+            question: 'What is the oxidation state of sulfur in H₂SO₄?',
+            options: ['+2', '+4', '+6', '+8'],
+            correctAnswer: 2,
+            explanation: 'In H₂SO₄, sulfur has an oxidation state of +6. H = +1, O = -2, so S = +6 to balance the charges.'
+        },
+        {
+            id: 19,
+            type: 'numerical',
+            difficulty: 'medium',
+            question: 'Calculate the number of moles in 36 grams of water (H₂O). (Molar mass of H₂O = 18 g/mol)',
+            answer: 2,
+            tolerance: 0.1,
+            explanation: 'Number of moles = mass / molar mass = 36 g / 18 g/mol = 2 moles'
+        },
+        {
+            id: 20,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'Which of the following has the highest bond energy?',
+            options: ['N≡N', 'O=O', 'C≡C', 'H-H'],
+            correctAnswer: 0,
+            explanation: 'N≡N (nitrogen triple bond) has the highest bond energy at 945 kJ/mol, making it very stable.'
+        },
+        {
+            id: 21,
+            type: 'numerical',
+            difficulty: 'hard',
+            question: 'Calculate the pH of a 0.001 M solution of HCl.',
+            answer: 3,
+            tolerance: 0.1,
+            explanation: 'HCl is a strong acid, so [H⁺] = 0.001 M. pH = -log[H⁺] = -log(0.001) = 3'
+        },
+        {
+            id: 22,
+            type: 'assertion',
+            difficulty: 'hard',
+            question: 'Assertion: Le Chatelier\'s principle applies to all chemical equilibria. Reason: Chemical equilibria are dynamic processes that respond to changes in conditions.',
+            assertion: 'Le Chatelier\'s principle applies to all chemical equilibria.',
+            reason: 'Chemical equilibria are dynamic processes that respond to changes in conditions.',
+            correctAnswer: 'A',
+            explanation: 'Both assertion and reason are true, and reason correctly explains assertion. Le Chatelier\'s principle states that equilibria shift to counteract changes in concentration, temperature, or pressure.'
         }
     ],
     mathematics: [
@@ -316,6 +462,79 @@ const questionDatabase = {
             reason: 'The derivative represents the instantaneous rate of change.',
             correctAnswer: 'A',
             explanation: 'Both assertion and reason are true, and reason correctly explains assertion. The derivative at a point gives both the slope of the tangent and the instantaneous rate of change.'
+        },
+        {
+            id: 11,
+            type: 'mcq',
+            difficulty: 'easy',
+            question: 'What is 2 + 2?',
+            options: ['3', '4', '5', '6'],
+            correctAnswer: 1,
+            explanation: '2 + 2 = 4'
+        },
+        {
+            id: 12,
+            type: 'mcq',
+            difficulty: 'easy',
+            question: 'What is the value of π (pi) to 2 decimal places?',
+            options: ['3.14', '3.15', '3.16', '3.17'],
+            correctAnswer: 0,
+            explanation: 'π ≈ 3.14159, so to 2 decimal places it is 3.14'
+        },
+        {
+            id: 13,
+            type: 'numerical',
+            difficulty: 'easy',
+            question: 'What is 15% of 200?',
+            answer: 30,
+            tolerance: 0.1,
+            explanation: '15% of 200 = (15/100) × 200 = 0.15 × 200 = 30'
+        },
+        {
+            id: 14,
+            type: 'mcq',
+            difficulty: 'medium',
+            question: 'What is the derivative of sin(x)?',
+            options: ['cos(x)', '-cos(x)', 'sin(x)', '-sin(x)'],
+            correctAnswer: 0,
+            explanation: 'The derivative of sin(x) is cos(x)'
+        },
+        {
+            id: 15,
+            type: 'numerical',
+            difficulty: 'medium',
+            question: 'Find the value of ∫₀² x dx',
+            answer: 2,
+            tolerance: 0.1,
+            explanation: '∫₀² x dx = [x²/2]₀² = (2)²/2 - (0)²/2 = 4/2 - 0 = 2'
+        },
+        {
+            id: 16,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'What is the value of lim(x→0) (sin x)/x?',
+            options: ['0', '1', '∞', 'Undefined'],
+            correctAnswer: 1,
+            explanation: 'This is a fundamental limit: lim(x→0) (sin x)/x = 1'
+        },
+        {
+            id: 17,
+            type: 'numerical',
+            difficulty: 'hard',
+            question: 'Find the derivative of x³ + 2x² - 5x + 1 at x = 2.',
+            answer: 19,
+            tolerance: 0.1,
+            explanation: 'f(x) = x³ + 2x² - 5x + 1, f\'(x) = 3x² + 4x - 5. At x = 2: f\'(2) = 3(4) + 4(2) - 5 = 12 + 8 - 5 = 15'
+        },
+        {
+            id: 18,
+            type: 'assertion',
+            difficulty: 'hard',
+            question: 'Assertion: The sum of the angles in any triangle is 180°. Reason: This is true only in Euclidean geometry.',
+            assertion: 'The sum of the angles in any triangle is 180°.',
+            reason: 'This is true only in Euclidean geometry.',
+            correctAnswer: 'A',
+            explanation: 'Both assertion and reason are true, and reason correctly explains assertion. The 180° sum is specific to Euclidean (flat) geometry.'
         }
     ]
 };
