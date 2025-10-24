@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIT JEE Question Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>IIT JEE Question Generator</h1>
+            <p>Practice with random questions for 11th grade preparation</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="subject">Subject:</label>
+                <select id="subject">
+                    <option value="all">All Subjects</option>
+                    <option value="physics">Physics</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="mathematics">Mathematics</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="difficulty">Difficulty:</label>
+                <select id="difficulty">
+                    <option value="all">All Levels</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="questionType">Question Type:</label>
+                <select id="questionType">
+                    <option value="all">All Types</option>
+                    <option value="mcq">Multiple Choice</option>
+                    <option value="numerical">Numerical</option>
+                    <option value="assertion">Assertion-Reason</option>
+                </select>
+            </div>
+
+            <button id="generateBtn" class="generate-btn">Generate Question</button>
+        </div>
+
+        <div class="question-container" id="questionContainer">
+            <div class="welcome-message">
+                <h2>Welcome to IIT JEE Question Generator!</h2>
+                <p>Select your preferences and click "Generate Question" to start practicing.</p>
+                <div class="features">
+                    <div class="feature">
+                        <h3>📚 Comprehensive Coverage</h3>
+                        <p>Questions from Physics, Chemistry, and Mathematics</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🎯 Difficulty Levels</h3>
+                        <p>Easy, Medium, and Hard questions</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📝 Question Types</h3>
+                        <p>MCQ, Numerical, and Assertion-Reason</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats" id="stats" style="display: none;">
+            <h3>Your Progress</h3>
+            <div class="stat-item">
+                <span class="stat-label">Questions Attempted:</span>
+                <span class="stat-value" id="attemptedCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Correct Answers:</span>
+                <span class="stat-value" id="correctCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Accuracy:</span>
+                <span class="stat-value" id="accuracy">0%</span>
+            </div>
+            <button id="resetStats" class="reset-btn">Reset Stats</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
