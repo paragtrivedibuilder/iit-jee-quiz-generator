@@ -64,6 +64,34 @@ const questionDatabase = {
             options: ['20√3 m', '40√3 m', '20 m', '40 m'],
             correctAnswer: 1,
             explanation: 'Range R = (u²sin2θ)/g = (20² × sin60°)/10 = (400 × √3/2)/10 = 20√3 m'
+        },
+        {
+            id: 8,
+            type: 'numerical',
+            difficulty: 'hard',
+            question: 'A block of mass 2 kg slides down a rough inclined plane of angle 30° with coefficient of friction 0.3. Calculate the acceleration of the block. (g = 10 m/s²)',
+            answer: 2.4,
+            tolerance: 0.1,
+            explanation: 'a = g(sinθ - μcosθ) = 10(sin30° - 0.3cos30°) = 10(0.5 - 0.3×0.866) = 10(0.5 - 0.26) = 2.4 m/s²'
+        },
+        {
+            id: 9,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'A particle moves in SHM with amplitude A and frequency f. What is the maximum velocity?',
+            options: ['2πfA', 'πfA', '4πfA', 'πfA/2'],
+            correctAnswer: 0,
+            explanation: 'Maximum velocity in SHM is v_max = ωA = 2πfA, where ω = 2πf is the angular frequency.'
+        },
+        {
+            id: 10,
+            type: 'assertion',
+            difficulty: 'hard',
+            question: 'Assertion: The work done by a conservative force is path independent. Reason: Conservative forces have potential energy associated with them.',
+            assertion: 'The work done by a conservative force is path independent.',
+            reason: 'Conservative forces have potential energy associated with them.',
+            correctAnswer: 'A',
+            explanation: 'Both assertion and reason are true, and reason correctly explains assertion. Conservative forces like gravity and spring force have potential energy and their work depends only on initial and final positions.'
         }
     ],
     chemistry: [
@@ -130,6 +158,34 @@ const questionDatabase = {
             options: ['Fluorine', 'Chlorine', 'Bromine', 'Iodine'],
             correctAnswer: 0,
             explanation: 'Fluorine has the highest electronegativity (4.0) among the given options, as electronegativity decreases down the group.'
+        },
+        {
+            id: 8,
+            type: 'numerical',
+            difficulty: 'hard',
+            question: 'Calculate the pH of a 0.01 M solution of NH₃ (Kb = 1.8 × 10⁻⁵).',
+            answer: 10.6,
+            tolerance: 0.1,
+            explanation: 'For weak base: [OH⁻] = √(Kb × C) = √(1.8×10⁻⁵ × 0.01) = √(1.8×10⁻⁷) = 4.24×10⁻⁴. pOH = -log(4.24×10⁻⁴) = 3.37. pH = 14 - 3.37 = 10.63'
+        },
+        {
+            id: 9,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'In the reaction 2A + 3B → C, if the rate of disappearance of A is 0.1 M/s, what is the rate of formation of C?',
+            options: ['0.05 M/s', '0.1 M/s', '0.2 M/s', '0.3 M/s'],
+            correctAnswer: 0,
+            explanation: 'Rate of formation of C = (1/2) × rate of disappearance of A = (1/2) × 0.1 = 0.05 M/s'
+        },
+        {
+            id: 10,
+            type: 'assertion',
+            difficulty: 'hard',
+            question: 'Assertion: Hybridization explains the geometry of molecules. Reason: Hybridization involves mixing of atomic orbitals of similar energies.',
+            assertion: 'Hybridization explains the geometry of molecules.',
+            reason: 'Hybridization involves mixing of atomic orbitals of similar energies.',
+            correctAnswer: 'A',
+            explanation: 'Both assertion and reason are true, and reason correctly explains assertion. Hybridization of atomic orbitals creates new hybrid orbitals that determine molecular geometry.'
         }
     ],
     mathematics: [
@@ -196,6 +252,34 @@ const questionDatabase = {
             options: ['0', '1', '2', 'Undefined'],
             correctAnswer: 2,
             explanation: 'lim(x→1) (x²-1)/(x-1) = lim(x→1) (x+1)(x-1)/(x-1) = lim(x→1) (x+1) = 1+1 = 2'
+        },
+        {
+            id: 8,
+            type: 'numerical',
+            difficulty: 'hard',
+            question: 'Find the area bounded by the curves y = x² and y = 2x - x².',
+            answer: 0.33,
+            tolerance: 0.01,
+            explanation: 'Points of intersection: x² = 2x - x² → 2x² = 2x → x = 0, 1. Area = ∫₀¹(2x - x² - x²)dx = ∫₀¹(2x - 2x²)dx = [x² - 2x³/3]₀¹ = 1 - 2/3 = 1/3 ≈ 0.33'
+        },
+        {
+            id: 9,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'If f(x) = x³ - 3x + 1, then the number of real roots of f(x) = 0 is:',
+            options: ['1', '2', '3', '0'],
+            correctAnswer: 2,
+            explanation: 'f\'(x) = 3x² - 3 = 3(x² - 1) = 3(x-1)(x+1). Critical points at x = ±1. f(-1) = 3, f(1) = -1. Since f(-∞) = -∞, f(∞) = ∞, and f(1) < 0, there are 3 real roots.'
+        },
+        {
+            id: 10,
+            type: 'assertion',
+            difficulty: 'hard',
+            question: 'Assertion: The derivative of a function at a point gives the slope of the tangent. Reason: The derivative represents the instantaneous rate of change.',
+            assertion: 'The derivative of a function at a point gives the slope of the tangent.',
+            reason: 'The derivative represents the instantaneous rate of change.',
+            correctAnswer: 'A',
+            explanation: 'Both assertion and reason are true, and reason correctly explains assertion. The derivative at a point gives both the slope of the tangent and the instantaneous rate of change.'
         }
     ]
 };
@@ -203,6 +287,7 @@ const questionDatabase = {
 // Application State
 let currentQuestion = null;
 let userAnswer = null;
+let askedQuestions = []; // Track asked questions to avoid repeats
 let stats = {
     attempted: 0,
     correct: 0
@@ -256,9 +341,26 @@ function generateQuestion() {
         return;
     }
     
-    // Select random question
-    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[randomIndex];
+    // Filter out already asked questions
+    const unaskedQuestions = availableQuestions.filter(q => !askedQuestions.includes(q.id));
+    
+    // If all questions have been asked, reset the asked questions list
+    if (unaskedQuestions.length === 0) {
+        askedQuestions = [];
+        const resetUnaskedQuestions = availableQuestions.filter(q => !askedQuestions.includes(q.id));
+        if (resetUnaskedQuestions.length === 0) {
+            showNoQuestionsMessage();
+            return;
+        }
+        currentQuestion = resetUnaskedQuestions[Math.floor(Math.random() * resetUnaskedQuestions.length)];
+    } else {
+        // Select random question from unasked questions
+        const randomIndex = Math.floor(Math.random() * unaskedQuestions.length);
+        currentQuestion = unaskedQuestions[randomIndex];
+    }
+    
+    // Add current question to asked questions
+    askedQuestions.push(currentQuestion.id);
     userAnswer = null;
     
     displayQuestion(currentQuestion);
