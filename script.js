@@ -186,6 +186,42 @@ const questionDatabase = {
             reason: 'Hybridization involves mixing of atomic orbitals of similar energies.',
             correctAnswer: 'A',
             explanation: 'Both assertion and reason are true, and reason correctly explains assertion. Hybridization of atomic orbitals creates new hybrid orbitals that determine molecular geometry.'
+        },
+        {
+            id: 11,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'Which of the following molecules has sp³ hybridization?',
+            options: ['CH₄', 'C₂H₄', 'C₂H₂', 'Benzene'],
+            correctAnswer: 0,
+            explanation: 'CH₄ has sp³ hybridization with tetrahedral geometry. C₂H₄ has sp² hybridization, C₂H₂ has sp hybridization, and benzene has sp² hybridization.'
+        },
+        {
+            id: 12,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'The rate constant of a first-order reaction is 0.0693 min⁻¹. What is the half-life of the reaction?',
+            options: ['5 min', '10 min', '15 min', '20 min'],
+            correctAnswer: 1,
+            explanation: 'For first-order reaction: t₁/₂ = 0.693/k = 0.693/0.0693 = 10 minutes'
+        },
+        {
+            id: 13,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'Which of the following is the strongest acid?',
+            options: ['HF', 'HCl', 'HBr', 'HI'],
+            correctAnswer: 3,
+            explanation: 'HI is the strongest acid among the given options. Acid strength increases down the group due to decreasing bond strength and increasing bond length.'
+        },
+        {
+            id: 14,
+            type: 'mcq',
+            difficulty: 'hard',
+            question: 'In the reaction N₂ + 3H₂ ⇌ 2NH₃, if the equilibrium constant Kc = 4, what is the value of Kp at 300K?',
+            options: ['4', '0.33', '12', '0.083'],
+            correctAnswer: 1,
+            explanation: 'Kp = Kc(RT)^Δn where Δn = 2 - (1+3) = -2. Kp = 4 × (0.0821 × 300)^(-2) = 4 × (24.63)^(-2) = 4/606.5 ≈ 0.33'
         }
     ],
     mathematics: [
